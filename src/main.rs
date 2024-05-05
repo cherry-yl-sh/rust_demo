@@ -1,6 +1,7 @@
 mod enum_test;
 mod array_test;
 mod flow_test;
+mod test_method;
 
 fn main() {
     // println!("Hello, world!");
