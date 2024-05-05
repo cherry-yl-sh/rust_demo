@@ -1,3 +1,7 @@
+mod enum_test;
+mod array_test;
+mod flow_test;
+
 fn main() {
     // println!("Hello, world!");
     // let a = "a";
@@ -9,8 +13,141 @@ fn main() {
     // }
     // let _x = 5;
     // let y = 1;
-    let res = add(1, 2);
-    println!("Result {}", res);
+    test_tuple_struct();
+}
+
+
+
+struct Color(i32, i32, i32);
+fn test_tuple_struct (){
+    let black = Color(0, 0, 0);
+    let red = Color(255, 0, 0);
+    println!("{}", black.0);
+}
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+fn test_user(){
+    let user1 = User {
+        email: String::from(""),
+        username: String::from(""),
+        active: true,
+        sign_in_count: 1,
+    };
+    let user2 = User {
+        email: String::from("user2"),
+        ..user1
+    };
+    println!("{}", user2.email);
+    println!("{}", user2.username);
+    println!("{}", user1.active);
+    // println!("{}", user1.username); ERROR  cause user1.username  is moved to user2
+}
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+fn test_string(){
+    let x = "hello";
+    let mut s = String::from("helle ");
+    s.push_str("dylan");
+    println!("{}", s);
+    s.push_str("!!!!");
+    println!("{}", s);
+    s.insert(5, '-');
+    println!("{}", s);
+    s.insert_str(5, "----");
+    println!("{}", s);
+
+    let s1 = String::from("hello1");
+    let s2 = String::from("world2");
+    let s3 = format!("{} {}", s1, s2);
+    println!("{}", s3);
+}
+fn test_slice(){
+    let s = String::from("hello world");
+    let hello = &s[0..5];
+    let world = &s[6..11];
+    println!("{} AND  {}", hello, world);
+}
+
+fn test_tuple(){
+    let tup = (500, 6.4, 1);
+    let (x, y, z) = tup;
+    println!("The value of y is: {}", y);
+
+    let a = tup.0;
+    let b = tup.1;
+    let c = tup.2;
+    println!("The value of a is: {}", a);
+    let b = a;
+    println!("The value of b is: {}", b);
+}
+
+
+
+
+
+
+fn test_double_mut_evariable(){
+    let mut x = 5;
+    let y = &mut x;
+    // let z = &mut x;
+    // println!("{} {} {}", x, y, z);
+}
+fn test_immutable_borrow() {
+    let x = 5;
+    let y = x;
+    println!("x = {}, y = {}", x, y);
+}
+
+fn change_string (str : &String){
+    // str.push_str(" world");
+}
+fn change_mut_string (str : &mut String){
+    str.push_str(" world");
+}
+fn test_borrowing() {
+    let x = 5;
+    let y = &x;
+    assert_eq!(5, x);
+    //assert_eq!(5, y);// ERROR
+    assert_eq!(5, *y);
+}
+
+fn test_copy_transfer() {
+    let x = 5;
+    make_copy(x);
+    println!("after make copy {}", x);
+
+    let s = String::from("Hello");
+    take_ownership(s);
+    // println!("{}", s); ERROR her
+}
+
+fn make_copy(x: i32) {
+    println!("{}", x);
+}
+
+fn take_ownership(s: String) {
+    println!("{}", s);
+}
+
+fn test_clone() {
+    let s1 = String::from("Hello");
+    let s2 = s1.clone();
+    println!("{}, {}", s1, s2);
+}
+
+fn clear(text: &mut String) -> () {
+    *text = String::from("");
 }
 
 fn add(x: i32, y: i32) -> i32 {
