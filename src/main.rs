@@ -3,6 +3,7 @@ mod array_test;
 mod flow_test;
 mod test_method;
 mod test_generics;
+mod test_trait;
 
 fn main() {
     // println!("Hello, world!");
