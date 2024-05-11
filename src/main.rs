@@ -4,6 +4,7 @@ mod flow_test;
 mod test_method;
 mod test_generics;
 mod test_trait;
+mod test_trait_object;
 
 fn main() {
     // println!("Hello, world!");
