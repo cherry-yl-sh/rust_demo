@@ -5,6 +5,8 @@ mod test_method;
 mod test_generics;
 mod test_trait;
 mod test_trait_object;
+mod test_vector;
+mod test_map;
 
 fn main() {
     // println!("Hello, world!");
