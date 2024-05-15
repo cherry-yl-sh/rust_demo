@@ -7,6 +7,8 @@ mod test_trait;
 mod test_trait_object;
 mod test_vector;
 mod test_map;
+mod test_error;
+mod test_print;
 
 fn main() {
     // println!("Hello, world!");
