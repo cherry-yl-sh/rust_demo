@@ -9,6 +9,7 @@ mod test_vector;
 mod test_map;
 mod test_error;
 mod test_print;
+mod lifecrycle;
 
 fn main() {
     // println!("Hello, world!");
